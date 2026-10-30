@@ -30,32 +30,32 @@ the same starts.
 ```
 report.pdf
 README.md
-pyproject.toml, uv.lock     exact Python dependencies
+pyproject.toml, uv.lock       exact Python dependencies
 configs/
-  config.yaml               environment, teacher, demo collection and eval settings
-  student_demos<N>.yaml     one config per dataset size (only n_demos differs)
+  config.yaml                 environment, teacher, demo collection and eval settings
+  student_demos<N>.yaml       one config per dataset size (only n_demos differs)
 code/
-  common.py                 environment setup, teacher loading, shared helpers
-  train_teacher.py          PPO teacher (MuJoCo Playground defaults)
-  collect_demos.py          runs the teacher, saves the demo pool
-  eval_teacher.py           evaluates the teacher on one eval seed
-  student_dataset.py        windowed dataset + min-max normalization
-  diffusion_model.py        conditional 1D U-Net (from the Diffusion Policy Colab)
-  train_student.py          Diffusion Policy training
-  policies.py               teacher and student policy wrappers
+  common.py                   environment setup, teacher loading, shared helpers
+  train_teacher.py            PPO teacher (MuJoCo Playground defaults)
+  collect_demos.py            runs the teacher, saves the demo pool
+  eval_teacher.py             evaluates the teacher on one eval seed
+  student_dataset.py          windowed dataset + min-max normalization
+  diffusion_model.py          conditional 1D U-Net (from the Diffusion Policy Colab)
+  train_student.py            Diffusion Policy training
+  policies.py                 teacher and student policy wrappers
   rollouts.py, evaluation.py  episode rollouts, metrics, saving results
-  eval_student.py           evaluates one student on one eval seed
-  run_all.sh                trains and evaluates every dataset size
-  visualize_demos.py        demo coverage, consistency, failures
-  visualize_eval.py         per-seed comparison of teacher and students
-  plot_vs_size.py           figures across dataset sizes
-data/demos_pool_1000.npz    demo pool (1,050 episodes, 953 successful)
-checkpoints/teacher/        PPO teacher checkpoint
-results/                    JSON summaries and figures
-videos/                     demo, teacher and student rollout videos
+  eval_student.py             evaluates one student on one eval seed
+  run_all.sh                  trains and evaluates every dataset size
+  visualize_demos.py          demo coverage, consistency, failures
+  visualize_eval.py           per-seed comparison of teacher and students
+  plot_vs_size.py             figures across dataset sizes
+data/demos_pool_1000.npz      demo pool (1,050 episodes, 953 successful)
+checkpoints/teacher/          PPO teacher checkpoint
+results/                      JSON summaries and figures
+videos/                       demo, teacher and student rollout videos
 ```
 
-Student checkpoints are not included (they are large); `run_all.sh` rebuilds them.
+Student checkpoints are not included; `run_all.sh` rebuilds them.
 
 ## Setup
 
