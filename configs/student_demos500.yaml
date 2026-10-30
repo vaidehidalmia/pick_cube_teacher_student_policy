@@ -1,0 +1,37 @@
+condition: demos500
+seed: 0
+checkpoint_dir: checkpoints/student_demos500
+
+data:
+  path: data/demos_pool_1000.npz
+  episodes: first_n_successful
+  n_demos: 500
+  pred_horizon: 16
+  obs_horizon: 2
+  action_horizon: 4
+
+model:
+  down_dims: [256, 512, 1024]
+  diffusion_step_embed_dim: 256
+  kernel_size: 5
+  n_groups: 8
+
+diffusion:
+  num_train_timesteps: 100
+  beta_schedule: squaredcos_cap_v2
+  clip_sample: true
+  prediction_type: epsilon
+
+training:
+  batch_size: 256
+  num_steps: 30000
+  lr: 1.0e-4
+  weight_decay: 1.0e-6
+  warmup_steps: 500
+  ema_power: 0.75
+  num_workers: 0
+
+wandb:
+  enabled: false
+  mode: offline
+  project: csci645-hw2

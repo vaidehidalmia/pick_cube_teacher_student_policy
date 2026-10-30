@@ -1,0 +1,19 @@
+env_name: PandaPickCube
+impl: jax
+success_threshold: 0.02
+
+teacher:
+  train_seed: 1
+  checkpoint_dir: checkpoints/teacher
+
+
+demos_pool:
+  demos_seed: 0
+  n_episodes: 1050
+  n_videos: 5
+  out: data/demos_pool_1000.npz
+
+eval:
+  seed: 1000
+  n_episodes: 50
+  n_videos: 5

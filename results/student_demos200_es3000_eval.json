@@ -1,0 +1,19 @@
+{
+  "summary": {
+    "env": "PandaPickCube",
+    "policy": "/home/vaidehi/csci645/DALMIA_VAIDEHI_HW2/checkpoints/student_demos200/policy.pt",
+    "eval_seed": 3000,
+    "threshold": 0.02,
+    "n_episodes": 50,
+    "success_rate": 0.56,
+    "ever_reached_rate": 0.62,
+    "reached_box_rate": 0.92,
+    "final_dist_median": 0.01611834205687046,
+    "final_dist_max": 0.41239655017852783,
+    "final_success_start_s_mean": 0.9135714285714286,
+    "final_success_start_s_std": 0.3206267777529583,
+    "episode_lengths": [
+      150
+    ]
+  }
+}

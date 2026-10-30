@@ -1,0 +1,19 @@
+{
+  "summary": {
+    "env": "PandaPickCube",
+    "policy": "/home/vaidehi/csci645/DALMIA_VAIDEHI_HW2/checkpoints/teacher/000024576000",
+    "eval_seed": 3000,
+    "threshold": 0.02,
+    "n_episodes": 50,
+    "success_rate": 0.98,
+    "ever_reached_rate": 0.98,
+    "reached_box_rate": 0.98,
+    "final_dist_median": 0.004347751382738352,
+    "final_dist_max": 0.41988784074783325,
+    "final_success_start_s_mean": 1.0048979591836735,
+    "final_success_start_s_std": 0.4016807669869988,
+    "episode_lengths": [
+      150
+    ]
+  }
+}

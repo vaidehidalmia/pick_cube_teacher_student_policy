@@ -1,0 +1,39 @@
+{
+  "env_name": "PandaPickCube",
+  "seed": 1,
+  "checkpoint_dir": "/home/vaidehi/csci645/DALMIA_VAIDEHI_HW2/checkpoints/teacher",
+  "ppo_params": {
+    "action_repeat": 1,
+    "batch_size": 512,
+    "discounting": 0.97,
+    "entropy_cost": 0.02,
+    "episode_length": 150,
+    "learning_rate": 0.001,
+    "network_factory": {
+      "policy_hidden_layer_sizes": [
+        32,
+        32,
+        32,
+        32
+      ],
+      "policy_obs_key": "state",
+      "value_hidden_layer_sizes": [
+        256,
+        256,
+        256,
+        256,
+        256
+      ],
+      "value_obs_key": "state"
+    },
+    "normalize_observations": true,
+    "num_envs": 2048,
+    "num_evals": 4,
+    "num_minibatches": 32,
+    "num_resets_per_eval": 10,
+    "num_timesteps": 20000000,
+    "num_updates_per_batch": 8,
+    "reward_scaling": 1.0,
+    "unroll_length": 10
+  }
+}

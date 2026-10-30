@@ -1,0 +1,21 @@
+{
+  "config": {
+    "demos_seed": 0,
+    "n_episodes": 1050,
+    "n_videos": 5,
+    "out": "data/demos_pool_1000.npz"
+  },
+  "teacher": "/home/vaidehi/csci645/DALMIA_VAIDEHI_HW2/checkpoints/teacher/000024576000",
+  "n_episodes": 1050,
+  "success_rate": 0.9076190476190477,
+  "ever_reached_rate": 0.9114285714285715,
+  "reached_box_rate": 0.9942857142857143,
+  "final_dist_median": 0.0051996055990457535,
+  "final_dist_max": 0.6167649030685425,
+  "final_success_start_s_mean": 0.9430849947534102,
+  "final_success_start_s_std": 0.3191241458709848,
+  "episode_lengths": [
+    150
+  ],
+  "n_successful": 953
+}

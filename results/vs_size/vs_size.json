@@ -1,0 +1,170 @@
+{
+  "eval_seeds": [
+    1000,
+    2000,
+    3000
+  ],
+  "thresholds_m": [
+    0.02,
+    0.03,
+    0.05
+  ],
+  "teacher": {
+    "n_episodes": 150,
+    "success_rate": 0.9533333333333334,
+    "success_ci": [
+      0.9068124260764263,
+      0.9772137410981221
+    ],
+    "final_dist_median": 0.0047934402246028185,
+    "success_at": {
+      "2cm": 0.9533333333333334,
+      "3cm": 0.9866666666666667,
+      "5cm": 0.9866666666666667
+    },
+    "categories": {
+      "success": 0.9533333333333334,
+      "reached target, not held": 0.0,
+      "grasped, not delivered": 0.03333333333333333,
+      "never reached cube": 0.013333333333333334,
+      "knocked out of bounds": 0.0
+    }
+  },
+  "students": [
+    {
+      "n_demos": 25,
+      "eval_seeds": [
+        1000,
+        2000,
+        3000
+      ],
+      "n_episodes": 150,
+      "success_rate": 0.0,
+      "success_ci": [
+        0.0,
+        0.02497113914571871
+      ],
+      "final_dist_median": 0.3390970230102539,
+      "success_at": {
+        "2cm": 0.0,
+        "3cm": 0.013333333333333334,
+        "5cm": 0.07333333333333333
+      },
+      "categories": {
+        "success": 0.0,
+        "reached target, not held": 0.013333333333333334,
+        "grasped, not delivered": 0.28,
+        "never reached cube": 0.7066666666666667,
+        "knocked out of bounds": 0.0
+      }
+    },
+    {
+      "n_demos": 50,
+      "eval_seeds": [
+        1000,
+        2000,
+        3000
+      ],
+      "n_episodes": 150,
+      "success_rate": 0.05333333333333334,
+      "success_ci": [
+        0.027269212890132462,
+        0.1017050047467096
+      ],
+      "final_dist_median": 0.17603319138288498,
+      "success_at": {
+        "2cm": 0.05333333333333334,
+        "3cm": 0.12666666666666668,
+        "5cm": 0.26
+      },
+      "categories": {
+        "success": 0.05333333333333334,
+        "reached target, not held": 0.08,
+        "grasped, not delivered": 0.3466666666666667,
+        "never reached cube": 0.5066666666666667,
+        "knocked out of bounds": 0.013333333333333334
+      }
+    },
+    {
+      "n_demos": 100,
+      "eval_seeds": [
+        1000,
+        2000,
+        3000
+      ],
+      "n_episodes": 150,
+      "success_rate": 0.18666666666666668,
+      "success_ci": [
+        0.13242330549709996,
+        0.25655860836755046
+      ],
+      "final_dist_median": 0.04648611880838871,
+      "success_at": {
+        "2cm": 0.18666666666666668,
+        "3cm": 0.3333333333333333,
+        "5cm": 0.54
+      },
+      "categories": {
+        "success": 0.18666666666666668,
+        "reached target, not held": 0.08,
+        "grasped, not delivered": 0.4533333333333333,
+        "never reached cube": 0.28,
+        "knocked out of bounds": 0.0
+      }
+    },
+    {
+      "n_demos": 200,
+      "eval_seeds": [
+        1000,
+        2000,
+        3000
+      ],
+      "n_episodes": 150,
+      "success_rate": 0.56,
+      "success_ci": [
+        0.48004707281221837,
+        0.6369563904902955
+      ],
+      "final_dist_median": 0.016962247900664806,
+      "success_at": {
+        "2cm": 0.56,
+        "3cm": 0.6933333333333334,
+        "5cm": 0.8266666666666667
+      },
+      "categories": {
+        "success": 0.56,
+        "reached target, not held": 0.04666666666666667,
+        "grasped, not delivered": 0.2733333333333333,
+        "never reached cube": 0.12,
+        "knocked out of bounds": 0.0
+      }
+    },
+    {
+      "n_demos": 500,
+      "eval_seeds": [
+        1000,
+        2000,
+        3000
+      ],
+      "n_episodes": 150,
+      "success_rate": 0.72,
+      "success_ci": [
+        0.6433420194970179,
+        0.7856706792788659
+      ],
+      "final_dist_median": 0.010659199673682451,
+      "success_at": {
+        "2cm": 0.72,
+        "3cm": 0.8533333333333334,
+        "5cm": 0.9133333333333333
+      },
+      "categories": {
+        "success": 0.72,
+        "reached target, not held": 0.06,
+        "grasped, not delivered": 0.15333333333333332,
+        "never reached cube": 0.06666666666666667,
+        "knocked out of bounds": 0.0
+      }
+    }
+  ]
+}
