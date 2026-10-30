@@ -17,7 +17,8 @@ student's checkpoint.
 
 Outputs (results/eval_es<seed>/ and videos/<prefix>/):
   failure_modes.png                       failure-category counts, teacher and every size
-  success_map_<prefix>.png                eval starts coloured by outcome, demo starts faint
+  success_map_<prefix>.png                eval starts coloured by outcome, with that student's
+                                          own training demo starts drawn faintly
   dist_curves_<prefix>.png                teacher vs student distance curves
   actions_<prefix>_<category>_ep<i>.png   teacher vs student actions, one start per
                                           failure category (student fails, teacher succeeds)
@@ -52,22 +53,47 @@ def label_for(prefix):
     return f"{m.group(1)} demos" if m else prefix
 
 
+_CKPTS = {}
+
+
+def checkpoint_of(d):
+    """The student checkpoint named in an eval file (cached), or None."""
+    path = meta(d, "policy")
+    if path is None:
+        return None
+    if path not in _CKPTS:
+        try:
+            import torch
+            _CKPTS[path] = torch.load(path, map_location="cpu", weights_only=False)
+        except Exception as e:                  # missing checkpoint etc.
+            print(f"could not load {path}: {e}")
+            _CKPTS[path] = None
+    return _CKPTS[path]
+
+
 def action_horizon_of(d):
     """Action horizon of an evaluation: from the eval file if recorded, else from
     the training config stored in the checkpoint it names. None if neither works."""
     ah = meta(d, "action_horizon")
     if ah not in (None, "None"):
         return int(ah)
-    path = meta(d, "policy")
-    if path is None:
-        return None
-    try:
-        import torch
-        cfg = torch.load(path, map_location="cpu", weights_only=False)["config"]
-        return int(cfg["data"]["action_horizon"])
-    except Exception as e:                      # missing checkpoint etc.: plot without marks
-        print(f"could not read the action horizon from {path}: {e}")
-        return None
+    ckpt = checkpoint_of(d)
+    return int(ckpt["config"]["data"]["action_horizon"]) if ckpt else None
+
+
+def training_starts(s, prefix, demos):
+    """Cube starts of the demos this student was trained on, as a dataset dict
+    for plot_starts' background. Uses the exact episode ids saved in the
+    checkpoint; falls back to the first N successful demos (N from the prefix)."""
+    ckpt = checkpoint_of(s)
+    if ckpt is not None and "episode_ids" in ckpt:
+        ids = np.asarray(ckpt["episode_ids"])
+    else:
+        m = re.match(r"student_demos(\d+)", prefix)
+        if not m:
+            return None
+        ids = np.flatnonzero(demos["success"])[:int(m.group(1))]
+    return dict(init_box_pos=demos["init_box_pos"][ids])
 
 
 def plot_failure_modes(policies, path):
@@ -176,7 +202,7 @@ if __name__ == "__main__":
 
     counts = plot_failure_modes(policies, OUT / "failure_modes.png")
     plot_starts(teacher, OUT / "success_map_teacher.png", "Teacher: outcome per eval start",
-                outcome=teacher["success"], background=demos)
+                outcome=teacher["success"])
 
     analysis = dict(n_episodes=len(teacher["success"]),
                     eval_seed=meta(teacher, "eval_seed"),
@@ -189,7 +215,7 @@ if __name__ == "__main__":
     for p, s in students.items():
         name = label_for(p)
         plot_starts(s, OUT / f"success_map_{p}.png", f"{name}: outcome per eval start",
-                    outcome=s["success"], background=demos)
+                    outcome=s["success"], background=training_starts(s, p, demos))
         plot_dist_curves([(teacher, "teacher", "tab:blue"), (s, name, "tab:orange")],
                          OUT / f"dist_curves_{p}.png", f"Distance to target: teacher vs {name}")
 

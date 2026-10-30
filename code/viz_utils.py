@@ -145,7 +145,8 @@ def plot_starts(d, path, title, outcome=None, background=None, show_targets=Fals
 
     if background is not None:
         bg = background["init_box_pos"]
-        ax.scatter(bg[:, 0], bg[:, 1], s=12, color="0.8", label="training demo starts")
+        ax.scatter(bg[:, 0], bg[:, 1], s=12, color="0.75",
+                   label=f"training demo starts ({len(bg)})")
 
     if show_targets:
         for b, t in zip(box, tgt):
